@@ -3,69 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
     <title>Temp Convertor</title>
 </head>
 <style>
-    body{
-        background: linear-gradient(to left bottom, lightgreen, lightblue);
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family:monospace;
-        color: darkcyan;
-    }
-    h2 {
-        margin: 5px 0 40px;
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
-    }
-    .container {
-        background-color: rgba(255, 255, 255, 0.3);
-        width: 85%;
-        max-width: 450px;
-        min-width: 350px;
-        padding: 40px 5px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)
-    }
-    .container div {
-        display: flex;
-        justify-content: space-between;
-        margin: 30px 20px;
-    }
-    .container div label{
-        text-transform: capitalize;
-        font-size: 1.2rem;
-        font-weight: 600;
-        /* margin: 5px 15px; */
-    }
-    .container div label::after {
-        content: ':';
-    }
-    input {
-        width: 220px;
-        padding: 5px;
-        border-radius: 2px;
-        border-color: rgba(255, 255, 255, 0.5);
-        background: rgba(255, 255, 255, 0.3);
-        font-size: 1rem;
-    }
-    input::placeholder {
-        color: darkgray;
-    }
-    input:focus {
-        color: rgb(21, 99, 9);
-        outline: none;
-        background-color: rgba(0, 255, 76, 0.2);
-        text-shadow: 1px 1px 0 rgb(255, 255, 255);
-        font-weight: bold;
-        letter-spacing: 2px;
-    }
+  
 </style>
 <body>
     <div class="container">
@@ -86,41 +29,6 @@
             <input type="number" name="kelvin" id="kelvin" placeholder="Enter Temperature">
         </div>
     </div>
-    <script>
-        const arr = ['celsius', 'fahrenheit', 'kelvin'];
-        const arrEl = new Array();
-
-        function calcTemp(type, value){
-            let resultC, resultF, resultK;
-            switch(type){
-                case 'celsius':
-                    resultC = value;
-                    resultF = (resultC * 9/5) + 32;
-                    resultK = resultC + 273.15;
-                    break;
-                case 'fahrenheit':
-                    resultF = value;
-                    resultC = (resultF - 32) * 5/9;
-                    resultK = (resultF - 32) * 5/9 + 273.15;
-                    break;
-                case 'kelvin':
-                    resultK = value;
-                    resultC = resultK - 273.15;
-                    resultF = (resultK - 273.15) * 9/5 + 32;
-                    break;
-            }
-            let results = [resultC, resultF, resultK];
-            arrEl.forEach( (el, idx) => el.value = results[idx].toFixed(2));
-        }
-        
-        arr.forEach( element => {
-            let temp = document.getElementById(element);
-            arrEl.push(temp);
-            temp.addEventListener('change', e => {
-                calcTemp(e.target.name, +e.target.value);
-            });
-        });
-        
-    </script>
+	<script src="script.js"></script>
 </body>
 </html>
